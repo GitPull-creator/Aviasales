@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { fetchId } from "../../actions";
 import SortTickets from "../SortTickets";
 import FilterTickets from "../FilterTickets";
-import FilterMenu from "../FilterMenu";
+import FilterMenu from "../Filter";
 import TicketsList from "../TicketsList";
 import Header from "../Header";
 
