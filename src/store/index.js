@@ -13,11 +13,7 @@ import sort from "../reducers/sort";
 
 const store = createStore(
   combineReducers({ id, tickets, filter, sort }),
-  compose(
-    applyMiddleware(thunk),
-    // eslint-disable-next-line no-underscore-dangle
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  )
+  compose(applyMiddleware(thunk))
 );
 
 export default store;
