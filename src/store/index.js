@@ -2,8 +2,8 @@ import {
   legacy_createStore as createStore,
   combineReducers,
   applyMiddleware,
+  compose,
 } from "redux";
-import { composeWithDevTools } from "@redux-devtools/extension";
 import thunk from "redux-thunk";
 
 import id from "../reducers/id";
@@ -13,7 +13,11 @@ import sort from "../reducers/sort";
 
 const store = createStore(
   combineReducers({ id, tickets, filter, sort }),
-  composeWithDevTools(applyMiddleware(thunk))
+  compose(
+    applyMiddleware(thunk),
+    // eslint-disable-next-line no-underscore-dangle
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  )
 );
 
 export default store;
