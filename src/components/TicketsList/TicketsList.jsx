@@ -13,7 +13,7 @@ import Spinner from "../Spinner";
 import classes from "./TicketsList.module.scss";
 
 function TicketsList() {
-  const [numberOfTickets, setNamberOfTickets] = useState(5);
+  const [numberOfTickets, setNumberOfTickets] = useState(5);
   const [firstPack, setFirstPack] = useState([]);
 
   const { searchId } = useSelector((state) => state.id);
@@ -46,7 +46,10 @@ function TicketsList() {
     (state) => state.sort.sortStatus,
     (state) => state.tickets.tickets,
     (filter, sort, ticketsData) => {
-      let newTickets = checkFilter(filter, ticketsData);
+      let newTickets = useMemo(
+        () => checkFilter(filter, ticketsData),
+        [filter, ticketsData]
+      );
       if (!sort.all) {
         newTickets = checkSort(sort, tickets, newTickets);
       }
@@ -55,7 +58,7 @@ function TicketsList() {
   );
 
   const addTickets = () => {
-    setNamberOfTickets(numberOfTickets + 5);
+    setNumberOfTickets(numberOfTickets + 5);
   };
 
   const rendreTickets = (data, num) => {

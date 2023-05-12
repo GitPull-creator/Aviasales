@@ -66,6 +66,8 @@ export const fetchTickets = (searchId, prevTickets) => async (dispatch) => {
     let { stop, tickets } = await res.json();
     tickets = [...prevTickets, ...tickets];
     const data = { stop, tickets };
+    // eslint-disable-next-line no-console
+    console.log(data);
 
     dispatch(ticketsFetching(data));
   } catch (err) {

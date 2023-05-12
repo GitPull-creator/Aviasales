@@ -5,6 +5,8 @@ const totalDuration = (data) =>
 let newTickets = {};
 
 const checkFilter = (checkedFilter, ticketsData) => {
+  // eslint-disable-next-line no-console
+  console.log("sortTickets");
   switch (checkedFilter) {
     case "cheap":
       return (newTickets = [

@@ -1,4 +1,6 @@
 const checkSort = (sortStatus, tickets, newTickets) => {
+  // eslint-disable-next-line no-console
+  // eslint-disable-next-line no-console
   const activeSorts = Object.entries(sortStatus)
     .slice(1)
     .reduce((acc, sort, index) => {
