@@ -1,6 +1,4 @@
 const checkSort = (sortStatus, tickets, newTickets) => {
-  // eslint-disable-next-line no-console
-  // eslint-disable-next-line no-console
   const activeSorts = Object.entries(sortStatus)
     .slice(1)
     .reduce((acc, sort, index) => {
@@ -13,8 +11,7 @@ const checkSort = (sortStatus, tickets, newTickets) => {
     }, [])
     .flat();
 
-  // eslint-disable-next-line no-param-reassign
-  newTickets = [
+  return [
     ...tickets.filter((ticket) => {
       const [seg1, seg2] = ticket.segments;
       const countStopsSeg1 = seg1.stops.length;
@@ -22,8 +19,6 @@ const checkSort = (sortStatus, tickets, newTickets) => {
       return activeSorts.includes(countStopsSeg1, countStopsSeg2);
     }),
   ];
-
-  return newTickets;
 };
 
 export { checkSort };

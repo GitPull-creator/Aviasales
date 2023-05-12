@@ -20,7 +20,7 @@ function Ticket({ price, carrier, segments }) {
       const totalStops = (count) => {
         switch (count) {
           case 0:
-            return "Без пересодок";
+            return "Без пересадок";
 
           case 1:
             return "1 пересадка";

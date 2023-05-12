@@ -1,34 +1,29 @@
-/* eslint-disable no-return-assign */
 const totalDuration = (data) =>
   data.segments.reduce((acc, prev) => acc + prev.duration, 0);
 
-let newTickets = {};
+const newTickets = {};
 
 const checkFilter = (checkedFilter, ticketsData) => {
-  // eslint-disable-next-line no-console
-  console.log("sortTickets");
   switch (checkedFilter) {
     case "cheap":
-      return (newTickets = [
-        ...ticketsData.sort((prev, next) => prev.price - next.price),
-      ]);
+      return [...ticketsData.sort((prev, next) => prev.price - next.price)];
 
     case "fast":
-      return (newTickets = [
+      return [
         ...ticketsData.sort(
           (prev, next) => totalDuration(prev) - totalDuration(next)
         ),
-      ]);
+      ];
 
     case "optimal":
-      return (newTickets = [
+      return [
         ...ticketsData.sort((prev, next) => {
           const optimalPrev = prev.price + totalDuration(prev);
           const optimalNext = next.price + totalDuration(next);
 
           return optimalPrev - optimalNext;
         }),
-      ]);
+      ];
 
     default:
       return newTickets;

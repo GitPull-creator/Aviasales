@@ -66,9 +66,6 @@ export const fetchTickets = (searchId, prevTickets) => async (dispatch) => {
     let { stop, tickets } = await res.json();
     tickets = [...prevTickets, ...tickets];
     const data = { stop, tickets };
-    // eslint-disable-next-line no-console
-    console.log(data);
-
     dispatch(ticketsFetching(data));
   } catch (err) {
     if (err.message === "500") {
@@ -108,13 +105,11 @@ export const sortCheckedAll = (prevValueAll, activeSort) => {
   const arrActiveSort = Object.entries(activeSort);
 
   const sortAllActive = Object.fromEntries(
-    // eslint-disable-next-line no-param-reassign, no-unused-vars,no-return-assign
-    arrActiveSort.map(([key, value]) => [key, (value = true)])
+    arrActiveSort.map(([key, value]) => [key, true])
   );
 
   const sortAllDisactive = Object.fromEntries(
-    // eslint-disable-next-line no-param-reassign, no-unused-vars,no-return-assign
-    arrActiveSort.map(([key, value]) => [key, (value = false)])
+    arrActiveSort.map(([key, value]) => [key, false])
   );
 
   const newActiveSort = prevValueAll ? sortAllDisactive : sortAllActive;
