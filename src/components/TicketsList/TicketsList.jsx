@@ -1,14 +1,11 @@
-/* eslint-disable no-param-reassign */
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { v1 as uuidv1 } from "uuid";
 import { createSelector } from "reselect";
 
 import { fetchTickets, ticketsFetched } from "../../actions";
 import { checkFilter } from "../../utilites/checkFilter";
 import { checkSort } from "../../utilites/checkSort";
 import { firstFilteredTickets } from "../../utilites/firstFilteredTickets";
-import uniqueKey from "../../utilites/uniqueKey";
 import Ticket from "../Ticket";
 import ErrorMessage from "../ErrorMessage";
 import Spinner from "../Spinner";
@@ -39,7 +36,6 @@ function TicketsList() {
     if (searchId && !searchStatus) {
       dispatch(fetchTickets(searchId, tickets));
     }
-
     if (searchStatus) {
       dispatch(ticketsFetched());
     }
@@ -49,14 +45,11 @@ function TicketsList() {
     (state) => state.filter.activeFilter,
     (state) => state.sort.sortStatus,
     (state) => state.tickets.tickets,
-
     (filter, sort, ticketsData) => {
       let newTickets = checkFilter(filter, ticketsData);
-
       if (!sort.all) {
         newTickets = checkSort(sort, tickets, newTickets);
       }
-
       return newTickets;
     }
   );
@@ -71,7 +64,7 @@ function TicketsList() {
 
       return (
         <Ticket
-          key={uniqueKey()}
+          key={`${price}${Math.floor(Math.random() * price)}_${carrier}}`}
           price={price}
           carrier={carrier}
           segments={segments}

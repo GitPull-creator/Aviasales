@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-// eslint-disable-next-line import/no-extraneous-dependencies
 import classNames from "classnames";
 
 import { filterChecked } from "../../actions";

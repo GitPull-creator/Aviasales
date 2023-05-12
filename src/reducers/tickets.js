@@ -4,9 +4,8 @@ const initialState = {
   tiketsLoadingStatus: "",
 };
 
-// eslint-disable-next-line default-param-last
-const tickets = (state = initialState, action) => {
-  switch (action.type) {
+const tickets = (state = initialState, { type, payload } = {}) => {
+  switch (type) {
     case "TICKETS_FETCHED":
       return {
         ...state,
@@ -15,8 +14,8 @@ const tickets = (state = initialState, action) => {
     case "TICKETS_FETCHING":
       return {
         ...state,
-        tickets: action.payload.tickets,
-        searchStatus: action.payload.stop,
+        tickets: payload.tickets,
+        searchStatus: payload.stop,
       };
     case "TICKETS_FETCHING_LOADING":
       return {

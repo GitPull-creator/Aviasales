@@ -11,5 +11,4 @@ const firstFilteredTickets = (filter, sort, tickets) => {
   return newTickets;
 };
 
-// eslint-disable-next-line import/prefer-default-export
 export { firstFilteredTickets };

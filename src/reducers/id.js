@@ -2,10 +2,8 @@ const initialState = {
   searchId: "",
   searchIdLoadingStatus: "idle",
 };
-
-// eslint-disable-next-line default-param-last
-const id = (state = initialState, action) => {
-  switch (action.type) {
+const id = (state = initialState, { type, payload } = {}) => {
+  switch (type) {
     case "SEARCHID_FETCHING":
       return {
         ...state,
@@ -14,7 +12,7 @@ const id = (state = initialState, action) => {
     case "SEARCHID_FETCHED":
       return {
         ...state,
-        searchId: action.payload,
+        searchId: payload,
         searchIdLoadingStatus: "idle",
       };
     case "SEARCHID_FETCHING_ERROR":

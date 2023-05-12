@@ -1,4 +1,4 @@
-/* eslint-disable no-return-assign */
+const baseUrl = "https://aviasales-test-api.kata.academy/";
 
 export const searchIdFetching = () => ({
   type: "SEARCHID_FETCHING",
@@ -17,14 +17,10 @@ export const fetchId = () => async (dispatch) => {
   dispatch(searchIdFetching());
 
   try {
-    const res = await fetch("https://aviasales-test-api.kata.academy/search");
+    const res = await fetch(`${baseUrl}search`);
 
     if (!res.ok) {
-      throw new Error(
-        `Could not fetch ${"https://aviasales-test-api.kata.academy/search"}, status ${
-          res.status
-        }`
-      );
+      throw new Error(`Could not fetch ${baseUrl}search, status ${res.status}`);
     }
 
     const id = await res.json();
@@ -56,9 +52,7 @@ export const fetchTickets = (searchId, prevTickets) => async (dispatch) => {
   dispatch(ticketsFetchingLoading());
 
   try {
-    const res = await fetch(
-      `https://aviasales-test-api.kata.academy/tickets?searchId=${searchId}`
-    );
+    const res = await fetch(`${baseUrl}tickets?searchId=${searchId}`);
 
     if (!res.ok) {
       if (res.status === 500) {
@@ -112,12 +106,12 @@ export const sortCheckedAll = (prevValueAll, activeSort) => {
   const arrActiveSort = Object.entries(activeSort);
 
   const sortAllActive = Object.fromEntries(
-    // eslint-disable-next-line no-param-reassign, no-unused-vars
+    // eslint-disable-next-line no-param-reassign, no-unused-vars,no-return-assign
     arrActiveSort.map(([key, value]) => [key, (value = true)])
   );
 
   const sortAllDisactive = Object.fromEntries(
-    // eslint-disable-next-line no-param-reassign, no-unused-vars
+    // eslint-disable-next-line no-param-reassign, no-unused-vars,no-return-assign
     arrActiveSort.map(([key, value]) => [key, (value = false)])
   );
 

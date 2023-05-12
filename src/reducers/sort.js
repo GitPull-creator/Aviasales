@@ -9,23 +9,22 @@ const initialState = {
   isOpen: false,
 };
 
-// eslint-disable-next-line default-param-last
-const sort = (state = initialState, action) => {
-  switch (action.type) {
+const sort = (state = initialState, { type, payload } = {}) => {
+  switch (type) {
     case "SORT_CHECKED":
       return {
         ...state,
-        sortStatus: action.payload,
+        sortStatus: payload,
       };
     case "SORT_CHECKED_ALL":
       return {
         ...state,
-        sortStatus: action.payload,
+        sortStatus: payload,
       };
     case "SORT_BTN_CHECKED":
       return {
         ...state,
-        isOpen: action.payload,
+        isOpen: payload,
       };
 
     default:

@@ -1,12 +1,9 @@
 /* eslint-disable no-return-assign */
 const totalDuration = (data) =>
-  // eslint-disable-next-line no-param-reassign
-  data.segments.reduce((acc, prev) => (acc += prev.duration), 0);
+  data.segments.reduce((acc, prev) => acc + prev.duration, 0);
 
-// eslint-disable-next-line import/no-mutable-exports
 let newTickets = {};
 
-// eslint-disable-next-line consistent-return
 const checkFilter = (checkedFilter, ticketsData) => {
   switch (checkedFilter) {
     case "cheap":
@@ -36,5 +33,4 @@ const checkFilter = (checkedFilter, ticketsData) => {
   }
 };
 
-// eslint-disable-next-line import/prefer-default-export
 export { checkFilter };
