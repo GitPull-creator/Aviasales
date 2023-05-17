@@ -27,9 +27,7 @@ function TicketsList() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (!firstPack.length) {
-      setFirstPack(tickets);
-    }
+    setFirstPack(tickets);
   }, [firstPack, tickets]);
 
   useEffect(() => {
@@ -64,10 +62,9 @@ function TicketsList() {
   const rendreTickets = (data, num) => {
     const rendreData = data.slice(0, num).map((ticket) => {
       const { price, carrier, segments } = ticket;
-
       return (
         <Ticket
-          key={`${price}${Math.floor(Math.random() * price)}_${carrier}}`}
+          key={`${carrier}_${price}_${segments[0].duration}`}
           price={price}
           carrier={carrier}
           segments={segments}
